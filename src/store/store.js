@@ -1,7 +1,7 @@
 const GET_ALL = "get-all";
 
 const initState = {
-    countries: []
+    countries: [],
 }
 
 const reducer = (state, action) => {

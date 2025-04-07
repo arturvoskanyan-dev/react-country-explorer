@@ -2,10 +2,10 @@
     @apply w-7xl m-auto
 }
 
-.card-info > p {
-    @apply font-light
+.card-info > p, h3 {
+    @apply font-light text-gray-300
 }
 
 .card-info span {
-    @apply font-bold
+    @apply font-bold text-white
 }

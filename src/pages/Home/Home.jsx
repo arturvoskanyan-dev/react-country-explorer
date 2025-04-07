@@ -18,6 +18,7 @@ export default function Home() {
                                 name={country.name.common}
                                 capital={country.capital}
                                 population={country.population}
+                                cca3={country.cca3}
                             />
                         )
                     })
