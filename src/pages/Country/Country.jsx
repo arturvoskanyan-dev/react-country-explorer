@@ -6,7 +6,7 @@ import { MyContext } from '../../App';
 export default function Country() {
     const { countries } = useContext(MyContext)
     let { name } = useParams();
-    const country = countries?.find((elem) => elem.cca3 === name)
+    const country = countries?.find((country) => country.cca3 === name)
 
     return (
         <section className='flex flex-col gap-16 p-4'>

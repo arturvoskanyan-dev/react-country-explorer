@@ -2,7 +2,7 @@ import { createContext, useEffect, useReducer } from "react"
 import { initState, reducer, getAllActionCreator } from "./store/store"
 import { API } from "./api/api"
 import { Route, Routes } from "react-router-dom"
-import { Home, Country } from "./pages/index"
+import { Home, Country, Layout } from "./pages/index"
 import './App.css'
 
 export const MyContext = createContext(null)
@@ -15,10 +15,10 @@ function App() {
   }, [])
 
   return (
-    <section className="container p-4">
+    <section className="container">
       <MyContext.Provider value={state}>
         <Routes>
-          <Route path="/">
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/country/:name" element={<Country />} />
           </Route>

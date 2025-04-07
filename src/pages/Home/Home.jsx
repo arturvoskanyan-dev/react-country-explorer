@@ -6,7 +6,7 @@ export default function Home() {
     const { countries } = useContext(MyContext);
 
     return (
-        <main className='container'>
+        <main className='container p-8'>
             <div className='flex justify-center flex-wrap gap-12'>
                 {
                     countries?.map((country) => {
