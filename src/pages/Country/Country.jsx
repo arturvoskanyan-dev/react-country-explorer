@@ -1,46 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { useParams } from 'react-router-dom';
-import { Border, Map } from "../index"
-import { MyContext } from '../../App';
+import { Map, CountryInfo } from "../index"
+import {getCountryActionCreator, initState, reducer} from "../../store/store"
+import { API } from '../../api/api';
 
 export default function Country() {
-    const { countries } = useContext(MyContext)
     let { name } = useParams();
-    const country = countries?.find((country) => country.cca3 === name)
+    const [state, dispatch] = useReducer(reducer, initState);
+    const country = state.country;
+
+    useEffect(() => {
+        API.getCountry(name).then((res) => dispatch(getCountryActionCreator(res.data)))
+    }, [name])
 
     return (
-        <section className='flex flex-col gap-16 p-4'>
+        <main className='flex flex-col gap-16 p-4'>
             <section className='flex items-center gap-16 text-white'>
-                <div>
-                    <img src={country?.flags.png} />
-                </div>
-                <div className='flex flex-col gap-4'>
-                    <div>
-                        <h1 className='text-4xl font-medium'>{country?.name.common}</h1>
-                    </div>
-                    <div className='flex gap-16 text-lg'>
-                        <div className='card-info'>
-                            <h3><span>Native Name : </span>{country?.name.common}</h3>
-                            <h3><span>Region : </span>{country?.region}</h3>
-                            <h3><span>Capital : </span>{country?.capital}</h3>
-                        </div>
-                        <div className='card-info'>
-                            <h3><span>Population : </span>{country?.population}</h3>
-                            <h3><span>Subregion : </span>{country?.subregion}</h3>
-                            <h3><span>Area : </span>{country?.area}km<sup>2</sup></h3>
-                        </div>
-                    </div>
-                    <div className='flex flex-wrap gap-4'>
-                        {country?.borders?.map((border, i) => <Border key={i} border={border} />)}
-                    </div>
-                </div>
+                <img src={country?.flags?.png} />
+                <CountryInfo country={country} />
             </section>
             <section className="flex items-center gap-12">
-                <div>
-                    <img src={country?.coatOfArms.png} className='w-[400px]' />
-                </div>
-                <Map name={country?.name.common} />
+                <img src={country?.coatOfArms?.png} className='w-[300px]' />
+                <Map name={country?.name?.common} />
             </section>
-        </section>
+        </main>
     )
 }
