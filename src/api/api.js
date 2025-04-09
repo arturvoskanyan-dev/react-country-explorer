@@ -11,5 +11,9 @@ export const API = {
 
     getCountry(cca3) {
         return instance.get(`/alpha/${cca3}`)
+    },
+
+    searchCountry(name) {
+        return instance.get(`/name/${name}`)
     }
 }

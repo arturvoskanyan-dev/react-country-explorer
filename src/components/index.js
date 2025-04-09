@@ -1,4 +1,7 @@
 import Earth from "./Earth/Earth";
-import { FaSearchLocation } from "react-icons/fa";
+import SearchCountries from "./SearchCountries/SearchCountries";
+import SearchBox from "./SearchBox/SearchBox";
+import SearchInput from "./SearchInput/SearchInput";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
-export {Earth, FaSearchLocation}
+export {Earth, SearchCountries, IoCloseCircleOutline, SearchBox, SearchInput}

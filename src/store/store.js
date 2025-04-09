@@ -1,11 +1,13 @@
 const GET_ALL = "get-all";
 const SEARCH = "search-text";
 const GET_COUNTRY = "get-country";
+const SEARCH_COUNTRY = "search-country";
 
 const initState = {
     text: "",
     countries: [],
-    country: {}
+    country: {},
+    searchCountries: []
 }
 
 const reducer = (state, action) => {
@@ -30,6 +32,13 @@ const reducer = (state, action) => {
             }
         }
 
+        case SEARCH_COUNTRY: {
+            return {
+                ...state,
+                searchCountries: action.payload
+            }
+        }
+
         default : 
             return state
     }
@@ -38,5 +47,6 @@ const reducer = (state, action) => {
 const getAllActionCreator = (res) => ({type : GET_ALL, payload : res.data})
 const getSearchActionCreator = (text) => ({type : SEARCH, payload : text})
 const getCountryActionCreator = ([res]) => ({type : GET_COUNTRY, payload : res})
+const getSearchCountryActionCreator = (res) => ({type : SEARCH_COUNTRY, payload : res})
 
-export {initState, reducer, getAllActionCreator, getSearchActionCreator, getCountryActionCreator}
+export {initState, reducer, getAllActionCreator, getSearchActionCreator, getCountryActionCreator, getSearchCountryActionCreator}
