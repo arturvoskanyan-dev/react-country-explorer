@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import { MyContext } from '../../App'
 import Countries from '../../components/Countries/Countries';
+import FilterRegion from '../../components/FilterRegion/FilterRegion';
 
 export default function Home() {
-    const {countries} = useContext(MyContext);
+    const { countries } = useContext(MyContext);
 
     return (
         <main className='container p-8'>
+            <FilterRegion />
             <div className='flex justify-center flex-wrap gap-12'>
                 {
                     countries?.map((country) => {
