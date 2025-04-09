@@ -1,13 +1,13 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { MyContext } from '../../App';
 import { useParams } from 'react-router-dom';
-import { Map, CountryInfo } from "../index"
-import {getCountryActionCreator, initState, reducer} from "../../store/store"
-import { API } from '../../api/api';
+import { Map, CountryInfo, API, getCountryActionCreator } from "../index"
+import { useDispatch } from 'react-redux';
 
 export default function Country() {
     let { name } = useParams();
-    const [state, dispatch] = useReducer(reducer, initState);
-    const country = state.country;
+    const {country} = useContext(MyContext);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         API.getCountry(name).then((res) => dispatch(getCountryActionCreator(res.data)))

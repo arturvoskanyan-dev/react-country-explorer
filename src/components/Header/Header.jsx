@@ -1,13 +1,14 @@
-import React, { useReducer } from 'react'
-import { initState, reducer, getSearchActionCreator, getSearchCountryActionCreator } from '../../store/store'
-import { Earth, SearchBox, SearchInput } from "../index"
-import { API } from '../../api/api';
+import React, { useContext } from 'react'
+import { MyContext } from '../../App'
+import { useDispatch } from 'react-redux';
+import { Earth, SearchBox, SearchInput, API, getSearchCountryActionCreator, getSearchActionCreator } from "../index"
 
 export default function Header() {
-    const [state, dispatch] = useReducer(reducer, initState);
+    const {text, searchCountries} = useContext(MyContext);
+    const dispatch = useDispatch();
 
     const handleSearch = () => {
-        API.searchCountry(state.text).then((res) => dispatch(getSearchCountryActionCreator(res.data)))
+        API.searchCountry(text).then((res) => dispatch(getSearchCountryActionCreator(res.data)))
     }
 
     return (
@@ -15,16 +16,16 @@ export default function Header() {
             <section className='flex justify-between items-center'>
                 <Earth />
                 <SearchInput
-                    text={state.text}
+                    text={text}
                     handleSearch={handleSearch}
                     dispatch={dispatch}
                     getSearchActionCreator={getSearchActionCreator}
                 />
             </section>
-            {state.searchCountries.length > 0 && (
+            {searchCountries.length > 0 && (
                 <section className='absolute right-0'>
                     <SearchBox
-                        countries={state.searchCountries}
+                        countries={searchCountries}
                         dispatch={dispatch}
                         getSearchCountryActionCreator={getSearchCountryActionCreator}
                     />

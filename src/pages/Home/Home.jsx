@@ -3,7 +3,7 @@ import { MyContext } from '../../App'
 import Countries from '../../components/Countries/Countries';
 
 export default function Home() {
-    const { countries } = useContext(MyContext);
+    const {countries} = useContext(MyContext);
 
     return (
         <main className='container p-8'>
