@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from 'react'
-import { MyContext } from '../../App';
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { Map, CountryInfo, getCountryThunk } from "../index"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Country() {
     let { name } = useParams();
-    const {country} = useContext(MyContext);
+    const {country} = useSelector((state) => state.country);
     const dispatch = useDispatch();
 
     useEffect(() => {

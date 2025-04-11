@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import { MyContext } from '../../App'
-import { useDispatch } from 'react-redux';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Earth, SearchBox, SearchInput, getSearchActionCreator, getSearchCountryThunk } from "../index"
 
 export default function Header() {
-    const {text, searchCountries} = useContext(MyContext);
+    const {searchCountries} = useSelector((state) => state.searchCountries);
+    const {text} = useSelector((state) => state.text);
     const dispatch = useDispatch();
 
     const handleSearch = () => {

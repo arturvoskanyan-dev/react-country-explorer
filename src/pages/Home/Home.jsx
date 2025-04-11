@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import { MyContext } from '../../App'
+import React from 'react'
 import Countries from '../../components/Countries/Countries';
 import FilterRegion from '../../components/FilterRegion/FilterRegion';
+import { useSelector } from 'react-redux';
 
 export default function Home() {
-    const { countries } = useContext(MyContext);
+    const {countries} = useSelector((state) => state.countries);
 
     return (
         <main className='container p-8'>
