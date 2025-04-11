@@ -14,12 +14,15 @@ export default function FilterRegion() {
             onClick={(e) => filter(e.target.value)}
             className='mb-8 p-2 bg-gray-700 text-white rounded-xl cursor-pointer'
         >
+            <option disabled>Filter by Region</option>
             <option>All</option>
-            <option>Europe</option>
             <option>Asia</option>
             <option>Africa</option>
             <option>Antarctic</option>
+            <option>Europe</option>
             <option>Oceania</option>
+            <option>North America</option>
+            <option>South America</option>
         </select>
     )
 }

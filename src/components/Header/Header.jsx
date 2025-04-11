@@ -1,20 +1,15 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Earth, SearchBox, SearchInput } from "../index"
+import { searchThunk } from '../../store/reducers/searchReducer';
 
 export default function Header() {
-    const { countries } = useSelector((state) => state.countries)
-    const [text, setText] = useState("");
-    const [countriesBox, setCountriesBox] = useState([]);
+    const {searchCountries} = useSelector((state) => state.searchCountries)
+    const {text} = useSelector((state) => state.searchCountries)
+    const dispatch = useDispatch();
 
     const handleSearch = (e) => {
-        const text = e.target.value;
-        setText(text);
-
-        const found = countries.filter((country) =>
-            country?.name?.common.toLowerCase().slice(0, text.length) === text.toLowerCase()
-        )
-        setCountriesBox(found)
+        dispatch(searchThunk(e.target.value))
     }
 
     return (
@@ -23,9 +18,9 @@ export default function Header() {
                 <Earth />
                 <SearchInput text={text} handleSearch={handleSearch} />
             </section>
-            {countriesBox.length > 0 && text.trim() && (
+            {searchCountries.length > 0 && text.trim() && (
                 <section className='absolute right-0'>
-                    <SearchBox countries={countriesBox} setText={setText} />
+                    <SearchBox countries={searchCountries} dispatch={dispatch} />
                 </section>
             )}
         </header>
