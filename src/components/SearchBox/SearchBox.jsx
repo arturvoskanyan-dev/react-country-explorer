@@ -1,7 +1,7 @@
 import React from 'react'
-import { SearchCountries, IoCloseCircleOutline } from "../index"
+import { SearchCountries, IoCloseCircleOutline, getSearchCountryActionCreator } from "../index"
 
-export default function SearchBox({ countries, dispatch, getSearchCountryActionCreator }) {
+export default function SearchBox({ countries, dispatch }) {
     return (
         <section className='flex flex-col gap-4 p-3 bg-white rounded-2xl'>
             <div className='w-xs max-h-[300px] flex flex-col gap-4  overflow-y-scroll'>

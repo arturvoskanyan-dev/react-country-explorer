@@ -1,13 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { API } from '..';
-import { getRegionActionCreator } from '../../store/reducers/countriesReducer';
+import { getRegionThunk } from '../../store/reducers/countriesReducer';
 
 export default function FilterRegion() {
     const dispatch = useDispatch();
 
     const filter = (e) => {
-        API.getRegion(e).then((res) => dispatch(getRegionActionCreator(res)))
+        dispatch(getRegionThunk(e))
     }
 
     return (

@@ -10,8 +10,8 @@ import CountryInfo from "../components/CountryInfo/CountryInfo";
 /* Store */
 
 import { API } from "../api/api";
-import { getAllActionCreator } from "../store/reducers/countriesReducer";
-import { getCountryActionCreator } from "../store/reducers/countryReducer";
+import { getCountriesThunk } from "../store/reducers/countriesReducer";
+import { getCountryThunk } from "../store/reducers/countryReducer";
 
 export {Home, Country, Border, Map, Layout, CountryInfo}
-export {API, getAllActionCreator, getCountryActionCreator}
+export {API, getCountriesThunk, getCountryThunk}

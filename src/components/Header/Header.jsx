@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { MyContext } from '../../App'
 import { useDispatch } from 'react-redux';
-import { Earth, SearchBox, SearchInput, API, getSearchCountryActionCreator, getSearchActionCreator } from "../index"
+import { Earth, SearchBox, SearchInput, getSearchActionCreator, getSearchCountryThunk } from "../index"
 
 export default function Header() {
     const {text, searchCountries} = useContext(MyContext);
     const dispatch = useDispatch();
 
     const handleSearch = () => {
-        API.searchCountry(text).then((res) => dispatch(getSearchCountryActionCreator(res.data)))
+        dispatch(getSearchCountryThunk(text))
     }
 
     return (
@@ -27,7 +27,6 @@ export default function Header() {
                     <SearchBox
                         countries={searchCountries}
                         dispatch={dispatch}
-                        getSearchCountryActionCreator={getSearchCountryActionCreator}
                     />
                 </section>
             )}

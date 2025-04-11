@@ -1,3 +1,5 @@
+import { API } from "../../components";
+
 const SEARCH_COUNTRY = "search-country";
 
 const initState = {
@@ -20,5 +22,10 @@ const searchCountriesReducer = (state = initState, action) => {
 
 const getSearchCountryActionCreator = (res) => ({type : SEARCH_COUNTRY, payload : res})
 
+const getSearchCountryThunk = (text) => {
+    return (dispatch) => {
+        API.searchCountry(text).then((res) => dispatch(getSearchCountryActionCreator(res.data)))
+    }
+}
 
-export {searchCountriesReducer, getSearchCountryActionCreator}
+export {searchCountriesReducer, getSearchCountryThunk, getSearchCountryActionCreator}

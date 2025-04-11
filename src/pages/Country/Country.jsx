@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { MyContext } from '../../App';
 import { useParams } from 'react-router-dom';
-import { Map, CountryInfo, API, getCountryActionCreator } from "../index"
+import { Map, CountryInfo, getCountryThunk } from "../index"
 import { useDispatch } from 'react-redux';
 
 export default function Country() {
@@ -10,7 +10,7 @@ export default function Country() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        API.getCountry(name).then((res) => dispatch(getCountryActionCreator(res.data)))
+        dispatch(getCountryThunk(name))
     }, [name])
 
     return (

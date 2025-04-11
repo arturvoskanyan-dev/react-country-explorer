@@ -1,3 +1,5 @@
+import { API } from "../../components";
+
 const GET_COUNTRY = "get-country";
 
 const initState = {
@@ -20,4 +22,10 @@ const countryReducer = (state = initState, action) => {
 
 const getCountryActionCreator = ([res]) => ({type : GET_COUNTRY, payload : res})
 
-export {countryReducer, getCountryActionCreator}
+const getCountryThunk = (name) => {
+    return (dispatch) => {
+        API.getCountry(name).then((res) => dispatch(getCountryActionCreator(res.data)))
+    }
+}
+
+export {countryReducer, getCountryThunk}

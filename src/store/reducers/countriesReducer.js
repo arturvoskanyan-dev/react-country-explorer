@@ -1,3 +1,5 @@
+import { API } from "../../components";
+
 const GET_ALL = "get-all";
 const GET_REGION = "get-region";
 
@@ -27,4 +29,16 @@ const countriesReducer = (state = initState, action) => {
 const getAllActionCreator = (res) => ({type : GET_ALL, payload : res.data})
 const getRegionActionCreator = (res) => ({type : GET_REGION, payload : res.data})
 
-export {countriesReducer, getAllActionCreator, getRegionActionCreator}
+const getCountriesThunk = () => {
+    return (dispatch) => {
+        API.getAll().then((res) => dispatch(getAllActionCreator(res)))
+    }
+}
+
+const getRegionThunk = (region) => {
+    return (dispatch) => {
+        API.getRegion(region).then((res) => dispatch(getRegionActionCreator(res)))
+    }
+}
+
+export {countriesReducer, getCountriesThunk, getRegionActionCreator, getRegionThunk}

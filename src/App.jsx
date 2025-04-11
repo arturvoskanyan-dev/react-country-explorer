@@ -1,6 +1,6 @@
 import { createContext, useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
-import { Home, Country, Layout, getAllActionCreator, API } from "./pages/index"
+import { Home, Country, Layout, getCountriesThunk } from "./pages/index"
 import { useDispatch, useSelector } from "react-redux"
 import './App.css'
 
@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    API.getAll().then((res) => dispatch(getAllActionCreator(res)))
+    dispatch(getCountriesThunk())
   }, [])
 
   return (
