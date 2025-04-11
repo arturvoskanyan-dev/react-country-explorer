@@ -1,4 +1,5 @@
 import { API } from "../../components";
+import { loaderAC } from "./loaderReducer";
 
 const GET_ALL = "get-all";
 const GET_REGION = "get-region";
@@ -31,7 +32,11 @@ const getRegionActionCreator = (res) => ({type : GET_REGION, payload : res.data}
 
 const getCountriesThunk = () => {
     return (dispatch) => {
-        API.getAll().then((res) => dispatch(getAllActionCreator(res)))
+        dispatch(loaderAC(true))
+        API.getAll().then((res) => {
+            dispatch(getAllActionCreator(res));  
+            dispatch(loaderAC(false))
+        })
     }
 }
 

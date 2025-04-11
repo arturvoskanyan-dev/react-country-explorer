@@ -13,10 +13,6 @@ export const API = {
         return instance.get(`/alpha/${cca3}`)
     },
 
-    searchCountry(name) {
-        return instance.get(`/name/${name}`)
-    },
-
     getRegion(region) {
         const endpoint = region === "All" ? "/all" : `/region/${region}`
         return instance.get(endpoint)
