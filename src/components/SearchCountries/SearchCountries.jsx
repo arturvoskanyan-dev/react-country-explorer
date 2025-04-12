@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { searchThunk } from '../../store/reducers/searchReducer';
+import searchThunk from '../../store/actions/search/searchThunk';
 
 export default function SearchCountries({ country, dispatch}) {
     return (

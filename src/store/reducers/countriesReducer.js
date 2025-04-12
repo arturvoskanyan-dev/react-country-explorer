@@ -1,8 +1,4 @@
-import { API } from "../../components";
-import { loaderAC } from "./loaderReducer";
-
-const GET_ALL = "get-all";
-const GET_REGION = "get-region";
+import {GET_ALL, GET_REGION} from "../actions/countries/countriesAction"
 
 const initState = {
     countries : []
@@ -27,23 +23,4 @@ const countriesReducer = (state = initState, action) => {
     }
 }
 
-const getAllActionCreator = (res) => ({type : GET_ALL, payload : res.data})
-const getRegionActionCreator = (res) => ({type : GET_REGION, payload : res.data})
-
-const getCountriesThunk = () => {
-    return (dispatch) => {
-        dispatch(loaderAC(true))
-        API.getAll().then((res) => {
-            dispatch(getAllActionCreator(res));  
-            dispatch(loaderAC(false))
-        })
-    }
-}
-
-const getRegionThunk = (region) => {
-    return (dispatch) => {
-        API.getRegion(region).then((res) => dispatch(getRegionActionCreator(res)))
-    }
-}
-
-export {countriesReducer, getCountriesThunk, getRegionActionCreator, getRegionThunk}
+export default countriesReducer;

@@ -1,5 +1,4 @@
-const SEARCH_TEXT = "search-text";
-const SEARCH_COUNTRIES = "search-countries"
+import {SEARCH_TEXT, SEARCH_COUNTRIES} from "../actions/search/searchAction"
 
 const initState = {
     text: "",
@@ -25,17 +24,4 @@ const searchReducer = (state = initState, action) => {
     }
 }
 
-const searchTextAC = (text) => ({type : SEARCH_TEXT, payload : text})
-const searchCountriesAC = (countries) => ({type : SEARCH_COUNTRIES, payload : countries}) 
-
-const searchThunk = (text) => (dispatch, getState) => {
-    const {countries} = getState().countries;
-    dispatch(searchTextAC(text))
-
-    const found = countries.filter((country) => 
-        country?.name?.common.toLowerCase().startsWith(text.toLowerCase())
-    )
-    dispatch(searchCountriesAC(found))
-}
-
-export {searchReducer, searchThunk}
+export default searchReducer;

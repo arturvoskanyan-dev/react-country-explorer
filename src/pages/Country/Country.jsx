@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { Map, CountryInfo, getCountryThunk } from "../index"
 import { useDispatch, useSelector } from 'react-redux';
-import Loader from '../../components/Loader/Loader';
+import { Map, CountryInfo, getCountryThunk, Loader } from "../index"
 
 export default function Country() {
     let { name } = useParams();

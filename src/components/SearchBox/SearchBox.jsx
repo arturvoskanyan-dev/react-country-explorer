@@ -1,6 +1,6 @@
 import React from 'react'
 import { SearchCountries, IoCloseCircleOutline } from "../index"
-import { searchThunk } from '../../store/reducers/searchReducer'
+import searchThunk from '../../store/actions/search/searchThunk'
 
 export default function SearchBox({ countries, dispatch }) {
     return (

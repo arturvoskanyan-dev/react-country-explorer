@@ -1,8 +1,6 @@
 import React from 'react'
-import Countries from '../../components/Countries/Countries';
-import FilterRegion from '../../components/FilterRegion/FilterRegion';
-import Loader from '../../components/Loader/Loader';
 import { useSelector } from 'react-redux';
+import {Loader, FilterRegion, Countries} from "../index"
 
 export default function Home() {
     const {countries} = useSelector((state) => state.countries);

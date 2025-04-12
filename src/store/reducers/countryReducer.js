@@ -1,7 +1,4 @@
-import { API } from "../../components";
-import { loaderAC } from "./loaderReducer";
-
-const GET_COUNTRY = "get-country";
+import {GET_COUNTRY} from "../actions/country/countryAction"
 
 const initState = {
     country : {}
@@ -21,16 +18,4 @@ const countryReducer = (state = initState, action) => {
     }
 }
 
-const getCountryActionCreator = ([res]) => ({type : GET_COUNTRY, payload : res})
-
-const getCountryThunk = (name) => {
-    return (dispatch) => {
-        dispatch(loaderAC(true))
-        API.getCountry(name).then((res) => {
-            dispatch(getCountryActionCreator(res.data));
-            dispatch(loaderAC(false));
-        })
-    }
-}
-
-export {countryReducer, getCountryThunk}
+export default countryReducer;

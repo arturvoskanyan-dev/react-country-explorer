@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { getRegionThunk } from '../../store/reducers/countriesReducer';
+import { getRegionThunk } from '../../store/actions/countries/countriesThunk';
 
 export default function FilterRegion() {
     const dispatch = useDispatch();
@@ -14,7 +14,6 @@ export default function FilterRegion() {
             onClick={(e) => filter(e.target.value)}
             className='mb-8 p-2 bg-gray-700 text-white rounded-xl cursor-pointer'
         >
-            <option disabled>Filter by Region</option>
             <option>All</option>
             <option>Asia</option>
             <option>Africa</option>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Earth, SearchBox, SearchInput } from "../index"
-import { searchThunk } from '../../store/reducers/searchReducer';
+import searchThunk from '../../store/actions/search/searchThunk';
 
 export default function Header() {
     const {searchCountries} = useSelector((state) => state.searchCountries)

@@ -1,4 +1,4 @@
-const LOADER = "loader";
+import {LOADER} from "../actions/loader/loaderAction"
 
 const initState = {
     loader: false
@@ -16,6 +16,4 @@ const loaderReducer = (state = initState, action) => {
     }
 }
 
-const loaderAC = (isValue) => ({type : LOADER, payload : isValue})
-
-export {loaderAC, loaderReducer}
+export default loaderReducer;
